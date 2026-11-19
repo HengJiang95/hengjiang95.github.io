@@ -199,6 +199,11 @@
         "scholarFull": "Full list on Google Scholar",
         "allTopics": "All topics",
         "filterLabel": "Filter publications by topic",
+        "searchLabel": "Search publications",
+        "searchPlaceholder": "Title, author, journal, or DOI",
+        "yearLabel": "Publication year",
+        "allYears": "All years",
+        "noPublications": "No publications match these filters.",
         "countPattern": "%n publications",
         "countSingle": "%n publication",
         "repository": "Repository",
@@ -211,7 +216,10 @@
         "emailLabel": "Email",
         "addressLabel": "Office address",
         "schoolLink": "School website",
-        "figureTitle": "From projections to an image"
+        "figureTitle": "From projections to an image",
+        "figureEnlarge": "Enlarge image",
+        "figureOriginal": "Open original image",
+        "figureClose": "Close"
       },
       "topics": {
         "pet": {"label": "PET", "name": "PET reconstruction", "description": "Recovering activity distributions from low-count measurements using acquisition models and learned priors."},
@@ -246,6 +254,11 @@
         "scholarFull": "在 Google 学术查看完整列表",
         "allTopics": "全部",
         "filterLabel": "按主题筛选论文",
+        "searchLabel": "搜索论文",
+        "searchPlaceholder": "标题、作者、期刊或 DOI",
+        "yearLabel": "发表年份",
+        "allYears": "全部年份",
+        "noPublications": "没有符合当前条件的论文。",
         "countPattern": "%n 篇论文",
         "countSingle": "%n 篇论文",
         "repository": "项目仓库",
@@ -258,7 +271,10 @@
         "emailLabel": "邮箱",
         "addressLabel": "办公地址",
         "schoolLink": "人工智能学院官网",
-        "figureTitle": "从投影数据到重建图像"
+        "figureTitle": "从投影数据到重建图像",
+        "figureEnlarge": "放大图片",
+        "figureOriginal": "查看原图",
+        "figureClose": "关闭"
       },
       "topics": {
         "pet": {"label": "PET", "name": "PET 图像重建", "description": "结合采集模型与学习先验，从低计数数据中重建放射性活度分布。"},

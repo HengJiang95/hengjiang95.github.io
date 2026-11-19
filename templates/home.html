@@ -19,6 +19,7 @@
   <link rel="icon" href="$favicon" type="image/png">
   <link rel="stylesheet" href="$stylesheet">
   <script src="$script" defer></script>
+  <script src="$figuresScript" defer></script>
   <script type="application/ld+json">$structuredData</script>
 </head>
 <body id="top">
@@ -75,12 +76,26 @@
           <a class="text-link" href="$scholarUrl">$scholarFull</a>
         </div>
         <div class="filter-toolbar" hidden>
+          <div class="publication-query">
+            <label>
+              $searchLabel
+              <input type="search" id="paper-search" placeholder="$searchPlaceholder">
+            </label>
+            <label>
+              $yearLabel
+              <select id="paper-year">
+                <option value="">$allYears</option>
+                $yearOptions
+              </select>
+            </label>
+          </div>
           <div class="filters" role="group" aria-label="$filterLabel">
             $topicButtons
           </div>
           <span class="filter-count" data-count-pattern="$countPattern" data-count-single="$countSingle" role="status"></span>
         </div>
         <div class="publications-list">
+          <p class="publication-empty" hidden>$noPublications</p>
           $papers
         </div>
       </div>
@@ -109,5 +124,14 @@
       </div>
     </div>
   </footer>
+
+  <dialog class="figure-preview" aria-labelledby="figure-preview-title">
+    <div class="figure-preview-bar">
+      <h2 id="figure-preview-title"></h2>
+      <a class="text-link" target="_blank" rel="noopener" data-figure-original>$figureOriginal</a>
+      <form method="dialog"><button type="submit" autofocus>$figureClose</button></form>
+    </div>
+    <img class="figure-preview-image" alt="">
+  </dialog>
 </body>
 </html>

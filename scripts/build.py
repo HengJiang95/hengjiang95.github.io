@@ -36,7 +36,7 @@ def render_papers(papers, topics, name, github, repository_label):
                 if repo else ""
             )
             articles.append(f'''
-          <article class="paper" data-topics="{escape(" ".join(paper["topics"]))}">
+          <article class="paper" data-topics="{escape(" ".join(paper["topics"]))}" data-doi="{escape(paper['doi'])}">
             <div class="paper-main">
               <div class="paper-tags">{tag_line}</div>
               <h4 lang="en"><a href="{doi_url}">{title}</a></h4>
@@ -49,7 +49,7 @@ def render_papers(papers, topics, name, github, repository_label):
           </article>''')
         article_list = "".join(articles)
         sections.append(f'''
-        <section class="year-group" aria-labelledby="year-{year}">
+        <section class="year-group" data-year="{year}" aria-labelledby="year-{year}">
           <h3 id="year-{year}">{year}</h3>
           <div class="year-papers">{article_list}
           </div>
@@ -203,13 +203,16 @@ def render_hero_visuals(figures, language, copy, prefix):
     cards = []
     for index, figure in enumerate(figures):
         labels = figure[language]
+        title = escape(labels["title"])
         image = escape(f"{prefix}{figure['image']}")
         width, height = int(figure["width"]), int(figure["height"])
         priority = ' fetchpriority="high"' if index == 0 else ""
         cards.append(f'''<figure class="hero-figure">
-        <img class="hero-art" src="{image}" width="{width}" height="{height}" alt="{escape(labels["alt"])}"{priority}>
+        <a class="hero-image-link" href="{image}" data-figure-title="{title}" aria-label="{escape(copy['figureEnlarge'])} · {title}">
+          <img class="hero-art" src="{image}" width="{width}" height="{height}" alt="{escape(labels["alt"])}"{priority}>
+        </a>
         <figcaption>
-          <strong>{escape(labels["title"])}</strong>
+          <strong>{title}</strong>
           <span>{escape(labels["subtitle"])}</span>
         </figcaption>
       </figure>''')
@@ -257,6 +260,7 @@ def render_page(site, papers, template, language, variant):
         topic_buttons.append(
             f'<button type="button" data-filter="{escape(topic)}" aria-pressed="false">{escape(item["label"])}</button>'
         )
+    years = sorted({paper["year"] for paper in papers}, reverse=True)
 
     institution_parent = copy["institutionParent"]
     parent_line = f"<br>{escape(institution_parent)}" if institution_parent else ""
@@ -285,6 +289,7 @@ def render_page(site, papers, template, language, variant):
         favicon=f"{prefix}assets/icon.png",
         stylesheet=f"{prefix}assets/site.css",
         script=f"{prefix}assets/publications.js",
+        figuresScript=f"{prefix}assets/figures.js",
         heroVisuals=hero_visuals,
         structuredData=json.dumps(structured_data, ensure_ascii=False).replace("<", "\\u003c"),
         parentInstitution=parent_line,
@@ -301,6 +306,7 @@ def render_page(site, papers, template, language, variant):
         researchNote="" if experience else f'<p class="section-note">{escape(copy["education"])}</p>',
         researchCards="".join(research_cards),
         topicButtons="\n            ".join(topic_buttons),
+        yearOptions="\n              ".join(f'<option value="{year}">{year}</option>' for year in years),
         papers=render_papers(papers, topics, name, github, copy["repository"]),
         projectSections=render_projects(
             site["projects"], site.get("projectGroups", {}), language, github, copy["repository"]
