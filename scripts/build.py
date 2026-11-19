@@ -70,6 +70,122 @@ def render_language_links(language, prefix):
     )
 
 
+def render_experience(entries, language, heading):
+    if not entries:
+        return ""
+
+    rows = []
+    for entry in entries:
+        item = entry[language]
+        rows.append(f'''
+        <li>
+          <p class="experience-period">{escape(item["period"])}</p>
+          <div>
+            <p class="experience-role">{escape(item["role"])}</p>
+            <p class="experience-institution">{escape(item["institution"])}</p>
+          </div>
+        </li>''')
+    return f'''<section class="experience container section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <h2 id="experience-title">{escape(heading)}</h2>
+      </div>
+      <ul class="experience-list" role="list">{"".join(rows)}
+      </ul>
+    </section>'''
+
+
+def render_projects(projects, groups, language, github, repository_label):
+    cards = {key: [] for key in groups} if groups else {None: []}
+    heading_tag = "h4" if groups else "h3"
+    for project in projects:
+        key = project["group"] if groups else None
+        project_name = escape(project["name"])
+        topic = escape(project["topic"])
+        repository_url = escape(f"{github}/{project['repository']}")
+        cards[key].append(f'''
+          <article class="project-card project-card--{topic}">
+            <{heading_tag} lang="en">{project_name}</{heading_tag}>
+            <p>{escape(project["description"][language])}</p>
+            <a class="text-link" href="{repository_url}">{escape(repository_label)} · GitHub</a>
+          </article>''')
+
+    if not groups:
+        return f'<div class="project-grid">{"".join(cards[None])}</div>'
+
+    sections = []
+    for key, labels in groups.items():
+        if cards[key]:
+            sections.append(f'''
+        <section class="project-group" aria-labelledby="project-group-{escape(key)}">
+          <h3 id="project-group-{escape(key)}">{escape(labels[language])}</h3>
+          <div class="project-grid">{"".join(cards[key])}
+          </div>
+        </section>''')
+    return f'<div class="project-groups">{"".join(sections)}</div>'
+
+
+def render_academic_sections(funding, journals, language, copy):
+    sections = []
+    if funding:
+        rows = []
+        for entry in funding:
+            item = entry[language]
+            metadata = " · ".join(filter(None, (entry.get("period"), item["status"])))
+            rows.append(f'''
+          <li>
+            <p class="funding-title">{escape(item["title"])}</p>
+            <p class="funding-meta">{escape(metadata)}</p>
+          </li>''')
+        sections.append(f'''
+      <section class="section" id="funding" aria-labelledby="funding-title">
+        <div class="section-heading">
+          <h2 id="funding-title">{escape(copy["fundingHeading"])}</h2>
+        </div>
+        <ul class="funding-list" role="list">{"".join(rows)}
+        </ul>
+      </section>''')
+
+    if journals:
+        journal_rows = "".join(f"<li>{escape(journal)}</li>" for journal in journals)
+        sections.append(f'''
+      <section class="section" id="services" aria-labelledby="services-title">
+        <div class="section-heading">
+          <h2 id="services-title">{escape(copy["servicesHeading"])}</h2>
+        </div>
+        <h3 class="review-heading">{escape(copy["reviewHeading"])}</h3>
+        <ul class="review-list" lang="en" role="list">{journal_rows}</ul>
+      </section>''')
+
+    return f'<div class="container academic-details">{"".join(sections)}</div>' if sections else ""
+
+
+def render_contact(contact, language, copy):
+    if not contact:
+        return ""
+
+    email = escape(contact["email"])
+    address = "<br>".join(escape(line) for line in contact["address"][language])
+    website = escape(contact["website"])
+    return f'''<section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="contact-title">{escape(copy["contactHeading"])}</h2>
+          <a class="text-link" href="{website}">{escape(copy["schoolLink"])}</a>
+        </div>
+        <dl class="contact-details">
+          <div>
+            <dt>{escape(copy["emailLabel"])}</dt>
+            <dd><a class="text-link contact-email" href="mailto:{email}">{email}</a></dd>
+          </div>
+          <div>
+            <dt>{escape(copy["addressLabel"])}</dt>
+            <dd><address>{address}</address></dd>
+          </div>
+        </dl>
+      </div>
+    </section>'''
+
+
 def render_page(site, papers, template, language, variant):
     copy = variant["copy"]
     folder = variant["folder"]
@@ -82,6 +198,8 @@ def render_page(site, papers, template, language, variant):
     orcid = profile_urls["orcid"]
     github = profile_urls["github"]
     canonical = f"{origin}/{folder}"
+    experience = site.get("experience", [])
+    contact = site.get("contact")
 
     research_cards = []
     for topic, item in topics.items():
@@ -99,18 +217,6 @@ def render_page(site, papers, template, language, variant):
         topic_buttons.append(
             f'<button type="button" data-filter="{escape(topic)}" aria-pressed="false">{escape(item["label"])}</button>'
         )
-
-    project_cards = []
-    for project in site["projects"]:
-        project_name = escape(project["name"])
-        topic = escape(project["topic"])
-        repository_url = escape(f"{github}/{project['repository']}")
-        project_cards.append(f'''
-          <article class="project-card project-card--{topic}">
-            <h3 lang="en">{project_name}</h3>
-            <p>{escape(project["description"][language])}</p>
-            <a class="text-link" href="{repository_url}">{escape(copy["repository"])} · GitHub</a>
-          </article>''')
 
     institution_parent = copy["institutionParent"]
     parent_line = f"<br>{escape(institution_parent)}" if institution_parent else ""
@@ -148,10 +254,20 @@ def render_page(site, papers, template, language, variant):
         scholarUrl=escape(scholar),
         orcidUrl=escape(orcid),
         githubUrl=escape(github),
+        experienceNavLink=f'<a href="#experience">{escape(copy["experienceNav"])}</a>' if experience else "",
+        contactNavLink=f'<a href="#contact">{escape(copy["contactHeading"])}</a>' if contact else "",
+        experienceSection=render_experience(experience, language, copy.get("experienceHeading", "")),
+        researchNote="" if experience else f'<p class="section-note">{escape(copy["education"])}</p>',
         researchCards="".join(research_cards),
         topicButtons="\n            ".join(topic_buttons),
         papers=render_papers(papers, topics, name, github, copy["repository"]),
-        projectCards="".join(project_cards),
+        projectSections=render_projects(
+            site["projects"], site.get("projectGroups", {}), language, github, copy["repository"]
+        ),
+        academicSections=render_academic_sections(
+            site.get("funding", []), site.get("reviewJournals", []), language, copy
+        ),
+        contactSection=render_contact(contact, language, copy),
     )
 
 

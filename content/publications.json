@@ -33,7 +33,7 @@
     "journal": "Neurocomputing",
     "details": "132129",
     "doi": "10.1016/j.neucom.2025.132129",
-    "topics": ["spectral"],
+    "topics": ["spectral", "tensor", "compressive"],
     "repository": "DRNT2LRNet"
   },
   {
@@ -43,7 +43,7 @@
     "journal": "Information Fusion",
     "details": "124, 103366",
     "doi": "10.1016/j.inffus.2025.103366",
-    "topics": ["spectral"],
+    "topics": ["spectral", "compressive"],
     "repository": "SIGDUN-Net"
   },
   {
@@ -63,7 +63,7 @@
     "journal": "Optics & Laser Technology",
     "details": "171, 110424",
     "doi": "10.1016/j.optlastec.2023.110424",
-    "topics": ["spectral"]
+    "topics": ["spectral", "tensor", "compressive"]
   },
   {
     "year": 2024,
@@ -72,7 +72,7 @@
     "journal": "Computers and Electrical Engineering",
     "details": "115, 109133",
     "doi": "10.1016/j.compeleceng.2024.109133",
-    "topics": ["spectral"]
+    "topics": ["spectral", "tensor"]
   },
   {
     "year": 2024,
@@ -90,6 +90,6 @@
     "journal": "Optics and Lasers in Engineering",
     "details": "162, 107413",
     "doi": "10.1016/j.optlaseng.2022.107413",
-    "topics": ["spectral"]
+    "topics": ["spectral", "compressive"]
   }
 ]

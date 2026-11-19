@@ -6,11 +6,116 @@
     "orcid": "https://orcid.org/0000-0002-9344-4836",
     "github": "https://github.com/HengJiang95"
   },
+  "experience": [
+    {
+      "en": {
+        "period": "Sep 2026–Present",
+        "role": "Full-time Faculty Member",
+        "institution": "School of Artificial Intelligence, Guangdong Industry Polytechnic University"
+      },
+      "zh-CN": {
+        "period": "2026.09–至今",
+        "role": "专任教师",
+        "institution": "广东轻工职业技术大学人工智能学院"
+      }
+    },
+    {
+      "en": {
+        "period": "Aug–Sep 2026",
+        "role": "Postdoctoral Fellow",
+        "institution": "Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences"
+      },
+      "zh-CN": {
+        "period": "2026.08–2026.09",
+        "role": "博士后",
+        "institution": "中国科学院深圳先进技术研究院"
+      }
+    },
+    {
+      "en": {
+        "period": "Jun 2024",
+        "role": "PhD",
+        "institution": "Sun Yat-sen University"
+      },
+      "zh-CN": {
+        "period": "2024.06",
+        "role": "博士毕业",
+        "institution": "中山大学"
+      }
+    }
+  ],
+  "funding": [
+    {
+      "period": "2027–2029",
+      "en": {
+        "title": "Young Scientists Fund (Category C), National Natural Science Foundation of China",
+        "status": "Awarded · In progress"
+      },
+      "zh-CN": {
+        "title": "国家自然科学基金青年科学基金项目（C类）",
+        "status": "获批 · 在研"
+      }
+    },
+    {
+      "period": "2026–2028",
+      "en": {
+        "title": "General Program, Natural Science Foundation of Guangdong Province",
+        "status": "In progress"
+      },
+      "zh-CN": {
+        "title": "广东省自然科学基金面上项目",
+        "status": "在研"
+      }
+    },
+    {
+      "en": {
+        "title": "General Program (78th Round), China Postdoctoral Science Foundation",
+        "status": "Completed"
+      },
+      "zh-CN": {
+        "title": "中国博士后科学基金第78批面上资助",
+        "status": "已结题"
+      }
+    }
+  ],
+  "reviewJournals": [
+    "IEEE Transactions on Neural Networks and Learning Systems",
+    "Optics & Laser Technology",
+    "Soft Computing",
+    "The Visual Computer"
+  ],
+  "contact": {
+    "email": "2026100025@gdipu.edu.cn",
+    "website": "https://ict.gdipu.edu.cn/index.htm",
+    "address": {
+      "en": [
+        "School of Artificial Intelligence, Guangdong Industry Polytechnic University",
+        "No. 18 Xinxi Avenue Middle, Shishan Town, Nanhai District",
+        "Foshan, Guangdong 528225, China"
+      ],
+      "zh-CN": [
+        "广东轻工职业技术大学人工智能学院",
+        "广东省佛山市南海区狮山镇信息大道中18号",
+        "邮编 528225"
+      ]
+    }
+  },
+  "projectGroups": {
+    "medical": {
+      "en": "Computational Medical Imaging",
+      "zh-CN": "计算医学成像"
+    },
+    "optical": {
+      "en": "Computational Optical Imaging",
+      "zh-CN": "计算光学成像"
+    }
+  },
   "projects": [
     {
       "repository": "MEMDL-Net",
       "name": "MEMDL-Net",
       "topic": "pet",
+      "group": "medical",
       "description": {
         "en": "A deep unrolling network with cross-stage memory and spatial and frequency learning, evaluated on low-dose PET, undersampled MRI and sparse-view CT.",
         "zh-CN": "结合跨阶段记忆、空间域学习和频域一致性的深度展开网络，在低剂量 PET、欠采样 MRI 和稀疏角度 CT 上进行了评估。"
@@ -20,6 +125,7 @@
       "repository": "SIGDUN-Net",
       "name": "SIGDUN-Net",
       "topic": "spectral",
+      "group": "optical",
       "description": {
         "en": "A self-supervised unfolding method for dual-camera compressive imaging that uses a panchromatic measurement to guide hyperspectral reconstruction.",
         "zh-CN": "面向双相机压缩成像的自监督深度展开方法，利用全色测量引导高光谱图像重建。"
@@ -29,6 +135,7 @@
       "repository": "DRNT2LRNet",
       "name": "DRNT²LRNet",
       "topic": "spectral",
+      "group": "optical",
       "description": {
         "en": "A model-based unfolding method that combines low-rank tensor structure and spatial–spectral priors for snapshot hyperspectral reconstruction.",
         "zh-CN": "结合低秩张量结构与空谱先验，用于快照压缩高光谱图像重建的模型驱动深度展开方法。"
@@ -40,16 +147,18 @@
       "folder": "",
       "copy": {
         "pageTitle": "Heng Jiang · Computational Imaging",
-        "description": "Heng Jiang’s academic homepage. Research in PET image reconstruction, model-driven deep learning, and compressive hyperspectral imaging.",
+        "description": "Heng Jiang’s academic homepage. Research in medical image reconstruction, tensor analysis, and compressive spectral imaging.",
         "skip": "Skip to content",
         "navLabel": "Main navigation",
         "languageLabel": "Language",
         "profilesLabel": "Academic profiles",
         "field": "Computational imaging",
-        "institution": "Shenzhen Institutes of Advanced Technology",
-        "institutionParent": "Chinese Academy of Sciences",
-        "bio": "I develop image reconstruction methods that combine imaging physics with learned priors. My work spans low-dose PET, accelerated MRI and compressive hyperspectral imaging.",
-        "education": "PhD, Sun Yat-sen University · 2024",
+        "institution": "Guangdong Industry Polytechnic University",
+        "institutionParent": "School of Artificial Intelligence · Full-time Faculty",
+        "bio": "I develop image reconstruction methods that combine imaging physics with learned priors. My research spans low-dose PET, accelerated MRI, tensor analysis, and compressive spectral imaging.",
+        "education": "PhD, Sun Yat-sen University · June 2024",
+        "experienceNav": "CV",
+        "experienceHeading": "Education and appointments",
         "research": "Research",
         "publications": "Publications",
         "projects": "Projects",
@@ -63,6 +172,13 @@
         "repository": "Repository",
         "projectHeading": "Research projects",
         "githubFull": "View GitHub profile",
+        "fundingHeading": "Honors and funding",
+        "servicesHeading": "Professional Services",
+        "reviewHeading": "Journal Reviewer",
+        "contactHeading": "Contact",
+        "emailLabel": "Email",
+        "addressLabel": "Office address",
+        "schoolLink": "School website",
         "figureTitle": "From projections to an image",
         "figureSubtitle": "Simulated phantom · Filtered back-projection",
         "figureAlt": "A parallel-beam sinogram on the left and a reconstructed numerical phantom on the right"
@@ -70,7 +186,9 @@
       "topics": {
         "pet": {"label": "PET", "name": "PET reconstruction", "description": "Recovering activity distributions from low-count measurements using acquisition models and learned priors."},
         "mrct": {"label": "MRI / CT", "name": "MRI and CT", "description": "Reconstructing images from undersampled MRI and sparse-view CT measurements with data consistency."},
-        "spectral": {"label": "Hyperspectral", "name": "Hyperspectral imaging", "description": "Recovering spectral image cubes from coded snapshots using low-rank structure and deep unfolding."},
+        "spectral": {"label": "Hyperspectral", "name": "Hyperspectral imaging", "description": "Restoring hyperspectral images using spatial and spectral priors."},
+        "tensor": {"label": "Tensor analysis", "name": "Tensor analysis", "description": "Modeling multidimensional images with low-rank tensor priors and nonlocal structure."},
+        "compressive": {"label": "Compressive spectral", "name": "Compressive spectral imaging", "description": "Reconstructing spectral data from coded aperture snapshots and complementary measurements."},
         "structured": {"label": "3D sensing"}
       }
     },
@@ -78,16 +196,18 @@
       "folder": "zh/",
       "copy": {
         "pageTitle": "Heng Jiang · 学术主页",
-        "description": "Heng Jiang 的学术主页，涵盖 PET 图像重建、模型驱动深度学习和压缩高光谱成像。",
+        "description": "Heng Jiang 的学术主页，涵盖医学图像重建、张量分析和压缩光谱成像。",
         "skip": "跳到正文",
         "navLabel": "主导航",
         "languageLabel": "语言",
         "profilesLabel": "学术档案",
         "field": "计算成像",
-        "institution": "中国科学院深圳先进技术研究院",
-        "institutionParent": "",
-        "bio": "我研究将成像物理模型与学习先验结合的图像重建方法，关注低剂量 PET、加速 MRI 和压缩高光谱成像。",
-        "education": "中山大学博士 · 2024",
+        "institution": "广东轻工职业技术大学",
+        "institutionParent": "人工智能学院 · 专任教师",
+        "bio": "我研究将成像物理模型与学习先验结合的图像重建方法，关注低剂量 PET、加速 MRI、张量分析和压缩光谱成像。",
+        "education": "中山大学博士 · 2024 年 6 月",
+        "experienceNav": "履历",
+        "experienceHeading": "教育与任职经历",
         "research": "研究方向",
         "publications": "论文",
         "projects": "项目",
@@ -101,6 +221,13 @@
         "repository": "项目仓库",
         "projectHeading": "研究项目",
         "githubFull": "查看 GitHub 主页",
+        "fundingHeading": "获奖与科研资助",
+        "servicesHeading": "学术服务",
+        "reviewHeading": "期刊审稿人",
+        "contactHeading": "联系方式",
+        "emailLabel": "邮箱",
+        "addressLabel": "办公地址",
+        "schoolLink": "人工智能学院官网",
         "figureTitle": "从投影数据到重建图像",
         "figureSubtitle": "模拟体模 · 滤波反投影",
         "figureAlt": "左侧为平行束投影的正弦图，右侧为数值体模的重建切片"
@@ -108,7 +235,9 @@
       "topics": {
         "pet": {"label": "PET", "name": "PET 图像重建", "description": "结合采集模型与学习先验，从低计数数据中重建放射性活度分布。"},
         "mrct": {"label": "MRI / CT", "name": "MRI 与 CT", "description": "在数据一致性约束下，从欠采样 MRI 和稀疏角度 CT 的测量中重建图像。"},
-        "spectral": {"label": "高光谱", "name": "高光谱成像", "description": "利用低秩结构与深度展开，从编码快照中恢复高光谱数据立方体。"},
+        "spectral": {"label": "高光谱", "name": "高光谱成像", "description": "利用空间与光谱先验进行高光谱图像复原。"},
+        "tensor": {"label": "张量分析", "name": "张量分析", "description": "利用低秩张量先验和非局部结构对多维图像数据建模。"},
+        "compressive": {"label": "压缩光谱", "name": "压缩光谱成像", "description": "利用编码孔径快照和辅助观测重建光谱数据。"},
         "structured": {"label": "三维感知"}
       }
     }

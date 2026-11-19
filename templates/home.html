@@ -30,9 +30,11 @@
         <span>$name</span>
       </a>
       <nav class="main-nav" aria-label="$navLabel">
+        $experienceNavLink
         <a href="#research">$research</a>
         <a href="#publications">$publications</a>
         <a href="#projects">$projects</a>
+        $contactNavLink
       </nav>
       <nav class="language-switch" aria-label="$languageLabel">
         $languageLinks
@@ -60,10 +62,12 @@
       </figure>
     </section>
 
+    $experienceSection
+
     <section class="research container section" id="research" aria-labelledby="research-title">
       <div class="section-heading">
         <h2 id="research-title">$research</h2>
-        <p class="section-note">$education</p>
+        $researchNote
       </div>
       <div class="research-grid">
         $researchCards
@@ -93,10 +97,12 @@
         <h2 id="projects-title">$projectHeading</h2>
         <a class="text-link" href="$githubUrl">$githubFull</a>
       </div>
-      <div class="project-grid">
-        $projectCards
-      </div>
+      $projectSections
     </section>
+
+    $academicSections
+
+    $contactSection
   </main>
 
   <footer class="site-footer">
