@@ -232,6 +232,18 @@ button { font: inherit; }
   color: var(--white);
 }
 
+.hero-visuals {
+  display: grid;
+  min-width: 0;
+  gap: 0.78rem;
+}
+
+.hero-visuals h2 {
+  color: var(--text);
+  font-size: 0.96rem;
+  font-weight: 650;
+}
+
 .hero-figure {
   min-width: 0;
   border: 1px solid #c9d5e9;
@@ -261,6 +273,8 @@ button { font: inherit; }
 }
 
 .hero-figure figcaption strong { color: var(--ink); font-weight: 650; }
+
+.hero-visuals .hero-figure figcaption { padding: 0.62rem 0.86rem; }
 
 .section { scroll-margin-top: 1rem; }
 

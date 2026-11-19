@@ -186,6 +186,43 @@ def render_contact(contact, language, copy):
     </section>'''
 
 
+def render_hero_visuals(figures, language, copy, prefix):
+    show_heading = bool(figures)
+    if not figures:
+        figures = [{
+            "image": "assets/tomography.webp",
+            "width": 1160,
+            "height": 720,
+            language: {
+                "title": copy["figureTitle"],
+                "subtitle": copy["figureSubtitle"],
+                "alt": copy["figureAlt"],
+            },
+        }]
+
+    cards = []
+    for index, figure in enumerate(figures):
+        labels = figure[language]
+        image = escape(f"{prefix}{figure['image']}")
+        width, height = int(figure["width"]), int(figure["height"])
+        priority = ' fetchpriority="high"' if index == 0 else ""
+        cards.append(f'''<figure class="hero-figure">
+        <img class="hero-art" src="{image}" width="{width}" height="{height}" alt="{escape(labels["alt"])}"{priority}>
+        <figcaption>
+          <strong>{escape(labels["title"])}</strong>
+          <span>{escape(labels["subtitle"])}</span>
+        </figcaption>
+      </figure>''')
+
+    hero_visuals = cards[0]
+    if show_heading:
+        hero_visuals = f'''<section class="hero-visuals" aria-labelledby="hero-visuals-title">
+        <h2 id="hero-visuals-title">{escape(copy["figureTitle"])}</h2>
+        {"".join(cards)}
+      </section>'''
+    return hero_visuals, figures[0]["image"], figures[0][language]["alt"]
+
+
 def render_page(site, papers, template, language, variant):
     copy = variant["copy"]
     folder = variant["folder"]
@@ -200,6 +237,9 @@ def render_page(site, papers, template, language, variant):
     canonical = f"{origin}/{folder}"
     experience = site.get("experience", [])
     contact = site.get("contact")
+    hero_visuals, social_image, social_alt = render_hero_visuals(
+        site.get("heroFigures", []), language, copy, prefix
+    )
 
     research_cards = []
     for topic, item in topics.items():
@@ -240,11 +280,12 @@ def render_page(site, papers, template, language, variant):
         canonical=escape(canonical),
         englishUrl=escape(f"{origin}/"),
         chineseUrl=escape(f"{origin}/zh/"),
-        socialImage=escape(f"{origin}/assets/tomography.webp"),
+        socialImage=escape(f"{origin}/{social_image}"),
+        socialImageAlt=escape(social_alt),
         favicon=f"{prefix}assets/icon.png",
         stylesheet=f"{prefix}assets/site.css",
         script=f"{prefix}assets/publications.js",
-        figureImage=f"{prefix}assets/tomography.webp",
+        heroVisuals=hero_visuals,
         structuredData=json.dumps(structured_data, ensure_ascii=False).replace("<", "\\u003c"),
         parentInstitution=parent_line,
         profileLinks=" ".join(

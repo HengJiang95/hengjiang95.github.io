@@ -1,6 +1,38 @@
 {
   "name": "Heng Jiang",
   "origin": "https://hengjiang95.github.io",
+  "heroFigures": [
+    {
+      "image": "assets/pet-imaging.webp",
+      "width": 1200,
+      "height": 460,
+      "en": {
+        "title": "PET imaging",
+        "subtitle": "Simulated sinogram and reconstructed slice",
+        "alt": "A simulated PET sinogram on the left and a reconstructed activity slice on the right."
+      },
+      "zh-CN": {
+        "title": "PET 成像",
+        "subtitle": "模拟正弦图与重建切片",
+        "alt": "左侧为模拟 PET 正弦图，右侧为重建得到的放射性活度切片。"
+      }
+    },
+    {
+      "image": "assets/cassi-imaging.webp",
+      "width": 1200,
+      "height": 460,
+      "en": {
+        "title": "CASSI imaging",
+        "subtitle": "Simulated coded snapshot and recovered spectral bands",
+        "alt": "A simulated coded aperture snapshot on the left and recovered wavelength bands at 450, 550, and 660 nm on the right."
+      },
+      "zh-CN": {
+        "title": "CASSI 成像",
+        "subtitle": "模拟编码快照与重建光谱波段",
+        "alt": "左侧为模拟编码孔径快照，右侧为重建的 450、550 和 660 纳米波段。"
+      }
+    }
+  ],
   "profiles": {
     "scholar": "https://scholar.google.com/citations?user=1Rei_ToAAAAJ&hl=en",
     "orcid": "https://orcid.org/0000-0002-9344-4836",
@@ -179,9 +211,7 @@
         "emailLabel": "Email",
         "addressLabel": "Office address",
         "schoolLink": "School website",
-        "figureTitle": "From projections to an image",
-        "figureSubtitle": "Simulated phantom · Filtered back-projection",
-        "figureAlt": "A parallel-beam sinogram on the left and a reconstructed numerical phantom on the right"
+        "figureTitle": "From projections to an image"
       },
       "topics": {
         "pet": {"label": "PET", "name": "PET reconstruction", "description": "Recovering activity distributions from low-count measurements using acquisition models and learned priors."},
@@ -228,9 +258,7 @@
         "emailLabel": "邮箱",
         "addressLabel": "办公地址",
         "schoolLink": "人工智能学院官网",
-        "figureTitle": "从投影数据到重建图像",
-        "figureSubtitle": "模拟体模 · 滤波反投影",
-        "figureAlt": "左侧为平行束投影的正弦图，右侧为数值体模的重建切片"
+        "figureTitle": "从投影数据到重建图像"
       },
       "topics": {
         "pet": {"label": "PET", "name": "PET 图像重建", "description": "结合采集模型与学习先验，从低计数数据中重建放射性活度分布。"},

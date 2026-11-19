@@ -10,4 +10,5 @@
 
 ## 内容与素材
 
-论文信息依据公开的 ORCID 记录、Crossref 和出版商页面。首页图像由数值体模的平行束投影和滤波反投影生成。Inter 与 Instrument Serif 使用 SIL Open Font License，许可证见 `assets/fonts/`。
+论文信息依据公开的 ORCID 记录、Crossref 和出版商页面。首页 PET 图示展示模拟正弦图和重建切片，CASSI 图示展示模拟编码快照和重建光谱波段。Inter 与 Instrument Serif 使用 SIL Open Font License，许可证见 `assets/fonts/`。
+
