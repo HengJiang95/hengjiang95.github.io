@@ -1,0 +1,116 @@
+{
+  "name": "Heng Jiang",
+  "origin": "https://hengjiang95.github.io",
+  "profiles": {
+    "scholar": "https://scholar.google.com/citations?user=1Rei_ToAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0000-0002-9344-4836",
+    "github": "https://github.com/HengJiang95"
+  },
+  "projects": [
+    {
+      "repository": "MEMDL-Net",
+      "name": "MEMDL-Net",
+      "topic": "pet",
+      "description": {
+        "en": "A deep unrolling network with cross-stage memory and spatial and frequency learning, evaluated on low-dose PET, undersampled MRI and sparse-view CT.",
+        "zh-CN": "结合跨阶段记忆、空间域学习和频域一致性的深度展开网络，在低剂量 PET、欠采样 MRI 和稀疏角度 CT 上进行了评估。"
+      }
+    },
+    {
+      "repository": "SIGDUN-Net",
+      "name": "SIGDUN-Net",
+      "topic": "spectral",
+      "description": {
+        "en": "A self-supervised unfolding method for dual-camera compressive imaging that uses a panchromatic measurement to guide hyperspectral reconstruction.",
+        "zh-CN": "面向双相机压缩成像的自监督深度展开方法，利用全色测量引导高光谱图像重建。"
+      }
+    },
+    {
+      "repository": "DRNT2LRNet",
+      "name": "DRNT²LRNet",
+      "topic": "spectral",
+      "description": {
+        "en": "A model-based unfolding method that combines low-rank tensor structure and spatial–spectral priors for snapshot hyperspectral reconstruction.",
+        "zh-CN": "结合低秩张量结构与空谱先验，用于快照压缩高光谱图像重建的模型驱动深度展开方法。"
+      }
+    }
+  ],
+  "languages": {
+    "en": {
+      "folder": "",
+      "copy": {
+        "pageTitle": "Heng Jiang · Computational Imaging",
+        "description": "Heng Jiang’s academic homepage. Research in PET image reconstruction, model-driven deep learning, and compressive hyperspectral imaging.",
+        "skip": "Skip to content",
+        "navLabel": "Main navigation",
+        "languageLabel": "Language",
+        "profilesLabel": "Academic profiles",
+        "field": "Computational imaging",
+        "institution": "Shenzhen Institutes of Advanced Technology",
+        "institutionParent": "Chinese Academy of Sciences",
+        "bio": "I develop image reconstruction methods that combine imaging physics with learned priors. My work spans low-dose PET, accelerated MRI and compressive hyperspectral imaging.",
+        "education": "PhD, Sun Yat-sen University · 2024",
+        "research": "Research",
+        "publications": "Publications",
+        "projects": "Projects",
+        "publicationHeading": "Selected publications",
+        "scholarLabel": "Google Scholar",
+        "scholarFull": "Full list on Google Scholar",
+        "allTopics": "All topics",
+        "filterLabel": "Filter publications by topic",
+        "countPattern": "%n publications",
+        "countSingle": "%n publication",
+        "repository": "Repository",
+        "projectHeading": "Research projects",
+        "githubFull": "View GitHub profile",
+        "figureTitle": "From projections to an image",
+        "figureSubtitle": "Simulated phantom · Filtered back-projection",
+        "figureAlt": "A parallel-beam sinogram on the left and a reconstructed numerical phantom on the right"
+      },
+      "topics": {
+        "pet": {"label": "PET", "name": "PET reconstruction", "description": "Recovering activity distributions from low-count measurements using acquisition models and learned priors."},
+        "mrct": {"label": "MRI / CT", "name": "MRI and CT", "description": "Reconstructing images from undersampled MRI and sparse-view CT measurements with data consistency."},
+        "spectral": {"label": "Hyperspectral", "name": "Hyperspectral imaging", "description": "Recovering spectral image cubes from coded snapshots using low-rank structure and deep unfolding."},
+        "structured": {"label": "3D sensing"}
+      }
+    },
+    "zh-CN": {
+      "folder": "zh/",
+      "copy": {
+        "pageTitle": "Heng Jiang · 学术主页",
+        "description": "Heng Jiang 的学术主页，涵盖 PET 图像重建、模型驱动深度学习和压缩高光谱成像。",
+        "skip": "跳到正文",
+        "navLabel": "主导航",
+        "languageLabel": "语言",
+        "profilesLabel": "学术档案",
+        "field": "计算成像",
+        "institution": "中国科学院深圳先进技术研究院",
+        "institutionParent": "",
+        "bio": "我研究将成像物理模型与学习先验结合的图像重建方法，关注低剂量 PET、加速 MRI 和压缩高光谱成像。",
+        "education": "中山大学博士 · 2024",
+        "research": "研究方向",
+        "publications": "论文",
+        "projects": "项目",
+        "publicationHeading": "代表论文",
+        "scholarLabel": "Google 学术",
+        "scholarFull": "在 Google 学术查看完整列表",
+        "allTopics": "全部",
+        "filterLabel": "按主题筛选论文",
+        "countPattern": "%n 篇论文",
+        "countSingle": "%n 篇论文",
+        "repository": "项目仓库",
+        "projectHeading": "研究项目",
+        "githubFull": "查看 GitHub 主页",
+        "figureTitle": "从投影数据到重建图像",
+        "figureSubtitle": "模拟体模 · 滤波反投影",
+        "figureAlt": "左侧为平行束投影的正弦图，右侧为数值体模的重建切片"
+      },
+      "topics": {
+        "pet": {"label": "PET", "name": "PET 图像重建", "description": "结合采集模型与学习先验，从低计数数据中重建放射性活度分布。"},
+        "mrct": {"label": "MRI / CT", "name": "MRI 与 CT", "description": "在数据一致性约束下，从欠采样 MRI 和稀疏角度 CT 的测量中重建图像。"},
+        "spectral": {"label": "高光谱", "name": "高光谱成像", "description": "利用低秩结构与深度展开，从编码快照中恢复高光谱数据立方体。"},
+        "structured": {"label": "三维感知"}
+      }
+    }
+  }
+}

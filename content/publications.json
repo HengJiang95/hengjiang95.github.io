@@ -1,0 +1,95 @@
+[
+  {
+    "year": 2026,
+    "title": "Whole-body 18F-FDG PET reveals glycemic state-dependent reorganization of directed inter-organ metabolic networks",
+    "authors": ["Xuetong Tao", "Runxiang Huang", "Heng Jiang", "Qian Sun", "Yong Xiao", "Zhan Li", "Ning Ma", "Xiaohua Lin", "Guanghua Wen", "Hairong Zheng", "Dong Liang", "Na Zhang", "Mengjie Dong", "Zhanli Hu"],
+    "journal": "European Journal of Nuclear Medicine and Molecular Imaging",
+    "details": "53(13), 7992–8004",
+    "doi": "10.1007/s00259-026-08132-6",
+    "topics": ["pet"]
+  },
+  {
+    "year": 2026,
+    "title": "Bridging physics and intelligence: The evolutionary landscape of PET image reconstruction",
+    "authors": ["Heng Jiang", "Wanwan Guo", "Qiyang Zhang", "Yuxi Jin", "Haizhou Liu", "Zixiang Chen", "Hairong Zheng", "Dong Liang", "Zhanli Hu"],
+    "journal": "The Innovation Informatics",
+    "details": "2(3), 100052",
+    "doi": "10.59717/j.xinn-inform.2026.100052",
+    "topics": ["pet"]
+  },
+  {
+    "year": 2026,
+    "title": "Unlocking 2D/3D+T myocardial mechanics from cine MRI: a mechanically regularized space-time finite element correlation framework",
+    "authors": ["Haizhou Liu", "Xueling Qin", "Zhou Liu", "Yuxi Jin", "Heng Jiang", "Yunlong Gao", "Jidong Han", "Yijia Zheng", "Heng Sun", "Lingtao Mao", "François Hild", "Hairong Zheng", "Dong Liang", "Na Zhang", "Jiuping Liang", "Dehong Luo", "Zhanli Hu"],
+    "journal": "Medical Image Analysis",
+    "details": "109, 103944",
+    "doi": "10.1016/j.media.2026.103944",
+    "topics": ["mrct"]
+  },
+  {
+    "year": 2026,
+    "title": "DRNT²LRNet: A new model-driven deep unrolling network for high-quality compressive hyperspectral image reconstruction",
+    "authors": ["Heng Jiang", "Dongdong Teng", "Lilin Liu"],
+    "journal": "Neurocomputing",
+    "details": "132129",
+    "doi": "10.1016/j.neucom.2025.132129",
+    "topics": ["spectral"],
+    "repository": "DRNT2LRNet"
+  },
+  {
+    "year": 2025,
+    "title": "Side information-guided deep unfolding network based on self-supervised learning for dual-camera compressive hyperspectral imaging",
+    "authors": ["Heng Jiang", "Dongdong Teng", "Chen Xu", "Lilin Liu"],
+    "journal": "Information Fusion",
+    "details": "124, 103366",
+    "doi": "10.1016/j.inffus.2025.103366",
+    "topics": ["spectral"],
+    "repository": "SIGDUN-Net"
+  },
+  {
+    "year": 2025,
+    "title": "Memory-enhanced and multi-domain learning-based deep unrolling network for medical image reconstruction",
+    "authors": ["Heng Jiang", "Qiyang Zhang", "Yingying Hu", "Yuxi Jin", "Haizhou Liu", "Zixiang Chen", "Yumo Zhao", "Wei Fan", "Hairong Zheng", "Dong Liang", "Zhanli Hu"],
+    "journal": "Physics in Medicine & Biology",
+    "details": "70(17), 175008",
+    "doi": "10.1088/1361-6560/adf939",
+    "topics": ["pet", "mrct"],
+    "repository": "MEMDL-Net"
+  },
+  {
+    "year": 2024,
+    "title": "High-Fidelity compressive spectral image reconstruction through a novel Non-Convex Non-Local Low-Rank tensor approximation model",
+    "authors": ["Heng Jiang", "Chen Xu", "Lilin Liu"],
+    "journal": "Optics & Laser Technology",
+    "details": "171, 110424",
+    "doi": "10.1016/j.optlastec.2023.110424",
+    "topics": ["spectral"]
+  },
+  {
+    "year": 2024,
+    "title": "Hyperspectral Image Restoration via Tensor Multimode Low-Rank Prior and Spatial-Spectral Smoothness Regularization",
+    "authors": ["Heng Jiang", "Chen Xu", "Lilin Liu"],
+    "journal": "Computers and Electrical Engineering",
+    "details": "115, 109133",
+    "doi": "10.1016/j.compeleceng.2024.109133",
+    "topics": ["spectral"]
+  },
+  {
+    "year": 2024,
+    "title": "Event-Driven Fringe Projection Structured Light 3-D Reconstruction Based on Time–Frequency Analysis",
+    "authors": ["Yuhui Li", "Heng Jiang", "Chen Xu", "Lilin Liu"],
+    "journal": "IEEE Sensors Journal",
+    "details": "24(4), 5097–5106",
+    "doi": "10.1109/JSEN.2024.3349432",
+    "topics": ["structured"]
+  },
+  {
+    "year": 2023,
+    "title": "Joint spatial structural sparsity constraint and spectral low-rank approximation for snapshot compressive spectral imaging reconstruction",
+    "authors": ["Heng Jiang", "Chen Xu", "Lilin Liu"],
+    "journal": "Optics and Lasers in Engineering",
+    "details": "162, 107413",
+    "doi": "10.1016/j.optlaseng.2022.107413",
+    "topics": ["spectral"]
+  }
+]
