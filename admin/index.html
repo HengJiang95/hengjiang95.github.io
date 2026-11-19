@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://api.github.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>网站管理 · Heng Jiang</title>
+  <link rel="icon" href="../assets/img/icon.png">
+  <link rel="stylesheet" href="admin.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="page-heading">
+      <h1>网站管理</h1>
+      <a href="../zh/">返回学术主页</a>
+    </header>
+
+    <form id="login" autocomplete="off">
+      <h2>登录</h2>
+      <p>使用 HengJiang95 的 GitHub 细粒度访问令牌。创建时仅选择本站仓库，并将 Contents 设为 Read and write。令牌仅保存在当前页面的内存中。</p>
+      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">在 GitHub 创建令牌</a></p>
+      <fieldset>
+        <label>GitHub 令牌 <input id="token" type="password" required autocomplete="off" spellcheck="false"></label>
+        <button class="primary" type="submit">登录并读取内容</button>
+      </fieldset>
+    </form>
+
+    <form id="editor" hidden novalidate>
+      <nav aria-label="内容编辑">
+        <a href="#bio">简介</a>
+        <a href="#papers">论文</a>
+        <a href="#projects">项目</a>
+      </nav>
+      <fieldset id="entries">
+        <section id="bio">
+          <h2>简介</h2>
+          <div class="fields">
+            <label>中文简介 <textarea id="bio-zh" lang="zh-CN" rows="5" required></textarea></label>
+            <label>英文简介 <textarea id="bio-en" lang="en" rows="5" required></textarea></label>
+          </div>
+        </section>
+        <section id="papers">
+          <div class="section-heading">
+            <h2>论文</h2>
+            <button type="button" data-add="paper">新增论文</button>
+          </div>
+          <div class="entry-list" id="paper-list"></div>
+        </section>
+        <section id="projects">
+          <div class="section-heading">
+            <h2>项目</h2>
+            <button type="button" data-add="project">新增项目</button>
+          </div>
+          <div class="entry-list" id="project-list"></div>
+        </section>
+      </fieldset>
+      <div class="publish">
+        <p id="publish-status" role="status"></p>
+        <a id="last-commit" target="_blank" rel="noopener" hidden>查看提交</a>
+        <a href="https://github.com/HengJiang95/hengjiang95.github.io/actions" target="_blank" rel="noopener">查看发布进度</a>
+        <div class="publish-buttons">
+          <button class="primary" type="submit">提交并发布</button>
+          <button type="button" id="sign-out">退出登录</button>
+        </div>
+      </div>
+    </form>
+    <p id="login-status" role="status"></p>
+  </main>
+
+  <template id="paper-template">
+    <details class="entry">
+      <summary></summary>
+      <div class="fields">
+        <label class="wide">标题 <input name="title" required></label>
+        <label>年份 <input name="year" type="number" min="1000" max="9999" step="1" required></label>
+        <label>期刊 <input name="journal" required></label>
+        <label class="wide">作者（每行一位） <textarea name="authors" rows="4" required></textarea></label>
+        <label>卷期与页码或文章号 <input name="details"></label>
+        <label>DOI <input name="doi" placeholder="10.…" spellcheck="false"></label>
+        <label>GitHub 仓库名（可选） <input name="repository" pattern="[A-Za-z0-9_.\-]+" spellcheck="false"></label>
+        <fieldset class="wide topics">
+          <legend>研究主题</legend>
+          <div data-topics></div>
+        </fieldset>
+      </div>
+      <button type="button" data-remove>移除这篇论文</button>
+    </details>
+  </template>
+
+  <template id="project-template">
+    <details class="entry">
+      <summary></summary>
+      <div class="fields">
+        <label class="wide">项目名 <input name="name" required></label>
+        <label>分类 <select name="group" required></select></label>
+        <label>研究主题 <select name="topic" required></select></label>
+        <label class="wide">GitHub 仓库名 <input name="repository" pattern="[A-Za-z0-9_.\-]+" spellcheck="false" required></label>
+        <label>中文说明 <textarea name="descriptionZh" lang="zh-CN" rows="4" required></textarea></label>
+        <label>英文说明 <textarea name="descriptionEn" lang="en" rows="4" required></textarea></label>
+      </div>
+      <button type="button" data-remove>移除这个项目</button>
+    </details>
+  </template>
+</body>
+</html>

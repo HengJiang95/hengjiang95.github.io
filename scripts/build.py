@@ -1,6 +1,6 @@
-"""Regenerate the English and Chinese GitHub Pages HTML from the JSON content."""
+"""Generate the English and Chinese al-folio pages from the JSON content."""
 
-from html import escape
+from html import escape as html_escape
 from itertools import groupby
 from pathlib import Path
 from string import Template
@@ -8,6 +8,12 @@ import json
 
 
 ROOT = Path(__file__).resolve().parents[1]
+GENERATED = ROOT / "_pages" / "generated"
+
+
+def escape(value):
+    # Keep editable content literal when Jekyll processes the generated HTML.
+    return html_escape(value).replace("{", "&#123;").replace("}", "&#125;")
 
 
 def read_json(filename):
@@ -20,8 +26,12 @@ def render_papers(papers, topics, name, github, repository_label):
     for year, entries in groupby(ordered, key=lambda paper: paper["year"]):
         articles = []
         for paper in entries:
-            doi_url = escape(f"https://doi.org/{paper['doi']}")
             title = escape(paper["title"])
+            doi = paper.get("doi", "")
+            doi_url = escape(f"https://doi.org/{doi}")
+            title_link = f'<a href="{doi_url}">{title}</a>' if doi else title
+            doi_link = f'<a href="{doi_url}" aria-label="DOI · {title}">DOI</a>' if doi else ""
+            details = f" · {escape(paper['details'])}" if paper.get("details") else ""
             author_line = ", ".join(
                 f"<strong>{escape(author)}</strong>" if author == name else escape(author)
                 for author in paper["authors"]
@@ -36,15 +46,15 @@ def render_papers(papers, topics, name, github, repository_label):
                 if repo else ""
             )
             articles.append(f'''
-          <article class="paper" data-topics="{escape(" ".join(paper["topics"]))}" data-doi="{escape(paper['doi'])}">
+          <article class="paper" data-topics="{escape(" ".join(paper["topics"]))}" data-doi="{escape(doi)}">
             <div class="paper-main">
               <div class="paper-tags">{tag_line}</div>
-              <h4 lang="en"><a href="{doi_url}">{title}</a></h4>
+              <h4 lang="en">{title_link}</h4>
               <p class="authors" lang="en">{author_line}</p>
-              <p class="journal" lang="en"><cite>{escape(paper["journal"])}</cite> · {escape(paper["details"])}</p>
+              <p class="journal" lang="en"><cite>{escape(paper["journal"])}</cite>{details}</p>
             </div>
             <div class="paper-links">
-              <a href="{doi_url}" aria-label="DOI · {title}">DOI</a>{repo_link}
+              {doi_link}{repo_link}
             </div>
           </article>''')
         article_list = "".join(articles)
@@ -55,19 +65,6 @@ def render_papers(papers, topics, name, github, repository_label):
           </div>
         </section>''')
     return "".join(sections)
-
-
-def render_language_links(language, prefix):
-    links = {
-        "en": (prefix + "index.html", "EN"),
-        "zh-CN": (prefix + "zh/index.html", "中文"),
-    }
-    return " ".join(
-        f'<span lang="{code}" aria-current="page">{label}</span>'
-        if code == language else
-        f'<a href="{href}" lang="{code}" hreflang="{code}">{label}</a>'
-        for code, (href, label) in links.items()
-    )
 
 
 def render_experience(entries, language, heading):
@@ -85,7 +82,7 @@ def render_experience(entries, language, heading):
             <p class="experience-institution">{escape(item["institution"])}</p>
           </div>
         </li>''')
-    return f'''<section class="experience container section" id="experience" aria-labelledby="experience-title">
+    return f'''<section class="section" id="experience" aria-labelledby="experience-title">
       <div class="section-heading">
         <h2 id="experience-title">{escape(heading)}</h2>
       </div>
@@ -156,7 +153,7 @@ def render_academic_sections(funding, journals, language, copy):
         <ul class="review-list" lang="en" role="list">{journal_rows}</ul>
       </section>''')
 
-    return f'<div class="container academic-details">{"".join(sections)}</div>' if sections else ""
+    return "".join(sections)
 
 
 def render_contact(contact, language, copy):
@@ -167,22 +164,20 @@ def render_contact(contact, language, copy):
     address = "<br>".join(escape(line) for line in contact["address"][language])
     website = escape(contact["website"])
     return f'''<section class="contact section" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="contact-title">{escape(copy["contactHeading"])}</h2>
-          <a class="text-link" href="{website}">{escape(copy["schoolLink"])}</a>
-        </div>
-        <dl class="contact-details">
-          <div>
-            <dt>{escape(copy["emailLabel"])}</dt>
-            <dd><a class="text-link contact-email" href="mailto:{email}">{email}</a></dd>
-          </div>
-          <div>
-            <dt>{escape(copy["addressLabel"])}</dt>
-            <dd><address>{address}</address></dd>
-          </div>
-        </dl>
+      <div class="section-heading">
+        <h2 id="contact-title">{escape(copy["contactHeading"])}</h2>
+        <a class="text-link" href="{website}">{escape(copy["schoolLink"])}</a>
       </div>
+      <dl class="contact-details">
+        <div>
+          <dt>{escape(copy["emailLabel"])}</dt>
+          <dd><a class="text-link contact-email" href="mailto:{email}">{email}</a></dd>
+        </div>
+        <div>
+          <dt>{escape(copy["addressLabel"])}</dt>
+          <dd><address>{address}</address></dd>
+        </div>
+      </dl>
     </section>'''
 
 
@@ -223,7 +218,7 @@ def render_hero_visuals(figures, language, copy, prefix):
         <h2 id="hero-visuals-title">{escape(copy["figureTitle"])}</h2>
         {"".join(cards)}
       </section>'''
-    return hero_visuals, figures[0]["image"], figures[0][language]["alt"]
+    return hero_visuals, figures[0]["image"]
 
 
 def render_page(site, papers, template, language, variant):
@@ -240,7 +235,7 @@ def render_page(site, papers, template, language, variant):
     canonical = f"{origin}/{folder}"
     experience = site.get("experience", [])
     contact = site.get("contact")
-    hero_visuals, social_image, social_alt = render_hero_visuals(
+    hero_visuals, social_image = render_hero_visuals(
         site.get("heroFigures", []), language, copy, prefix
     )
 
@@ -277,26 +272,35 @@ def render_page(site, papers, template, language, variant):
         "sameAs": [scholar, orcid, github],
         "affiliation": {"@type": "Organization", "name": copy["institution"]},
     }
-    return template.substitute(
+    front_matter = {
+        "layout": "about",
+        "title": "中文" if folder else "About",
+        "permalink": f"/{folder}",
+        "lang": language,
+        "nav": bool(folder),
+        "nav_order": 1,
+        "subtitle": escape(copy["institution"]) + parent_line,
+        "description": escape(copy["description"]),
+        "og_image": f"/{social_image}",
+    }
+    header = "\n".join(
+        f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in front_matter.items()
+    )
+    markup = template.substitute(
         {key: escape(value) for key, value in copy.items()},
-        lang=language,
-        name=escape(name),
-        canonical=escape(canonical),
-        englishUrl=escape(f"{origin}/"),
-        chineseUrl=escape(f"{origin}/zh/"),
-        socialImage=escape(f"{origin}/{social_image}"),
-        socialImageAlt=escape(social_alt),
-        favicon=f"{prefix}assets/icon.png",
         stylesheet=f"{prefix}assets/site.css",
         script=f"{prefix}assets/publications.js",
         figuresScript=f"{prefix}assets/figures.js",
         heroVisuals=hero_visuals,
-        structuredData=json.dumps(structured_data, ensure_ascii=False).replace("<", "\\u003c"),
-        parentInstitution=parent_line,
+        structuredData=(
+            json.dumps(structured_data, ensure_ascii=False)
+            .replace("<", "\\u003c")
+            .replace("{{", "\\u007b{")
+            .replace("{%", "\\u007b%")
+        ),
         profileLinks=" ".join(
             f'<a href="{url}"{relationship}>{label}</a>' for label, url, relationship in profiles
         ),
-        languageLinks=render_language_links(language, prefix),
         scholarUrl=escape(scholar),
         orcidUrl=escape(orcid),
         githubUrl=escape(github),
@@ -306,7 +310,7 @@ def render_page(site, papers, template, language, variant):
         researchNote="" if experience else f'<p class="section-note">{escape(copy["education"])}</p>',
         researchCards="".join(research_cards),
         topicButtons="\n            ".join(topic_buttons),
-        yearOptions="\n              ".join(f'<option value="{year}">{year}</option>' for year in years),
+        yearOptions="\n            ".join(f'<option value="{year}">{year}</option>' for year in years),
         papers=render_papers(papers, topics, name, github, copy["repository"]),
         projectSections=render_projects(
             site["projects"], site.get("projectGroups", {}), language, github, copy["repository"]
@@ -316,15 +320,16 @@ def render_page(site, papers, template, language, variant):
         ),
         contactSection=render_contact(contact, language, copy),
     )
+    return f"---\n{header}\n---\n{markup}"
 
 
 def main():
     site = read_json("site.json")
     papers = read_json("publications.json")
     template = Template((ROOT / "templates" / "home.html").read_text(encoding="utf-8"))
+    GENERATED.mkdir(parents=True, exist_ok=True)
     for language, variant in site["languages"].items():
-        destination = ROOT / variant["folder"] / "index.html"
-        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination = GENERATED / f"{language}.html"
         destination.write_text(render_page(site, papers, template, language, variant), encoding="utf-8", newline="\n")
         print(destination.relative_to(ROOT).as_posix())
 

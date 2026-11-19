@@ -1,0 +1,42 @@
+title: blank
+first_name: Heng
+last_name: Jiang
+description: Academic website of Heng Jiang
+url: https://hengjiang95.github.io
+baseurl: ""
+lang: en
+icon: icon.png
+footer_text: 'Powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio">al-folio</a>.'
+
+theme: al_folio_core
+plugins:
+  - al_folio_core
+  - al_icons
+  - al_rtl
+  - jekyll-cache-bust
+  - jekyll-socials
+al_folio:
+  api_version: 1
+  style_engine: tailwind
+  tailwind:
+    version: 4.1.18
+    preflight: false
+    css_entry: assets/tailwind/app.css
+  distill:
+    engine: distillpub-template
+    source: al-org-dev/distill-template#al-folio
+  compat:
+    bootstrap:
+      enabled: false
+
+include: ["_pages"]
+exclude: [content, scripts, templates, Gemfile, Gemfile.lock, README.md]
+navbar_fixed: true
+footer_fixed: false
+max_width: 930px
+enable_darkmode: true
+serve_og_meta: true
+third_party_libraries:
+  google_fonts:
+    url:
+      fonts: https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap
