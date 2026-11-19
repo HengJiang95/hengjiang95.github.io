@@ -12,6 +12,7 @@
 }
 
 .academic-profile .hero-description { font-size: 1.08rem; line-height: 1.65; }
+.academic-profile .profile-field { color: var(--subtle); margin-bottom: 0.35rem; }
 
 .profile-links, .profile-nav {
   display: flex;

@@ -10,11 +10,11 @@ footer_text: 'Powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a href=
 
 theme: al_folio_core
 plugins:
+  - jekyll-cache-bust
+  - jekyll-socials
   - al_folio_core
   - al_icons
   - al_rtl
-  - jekyll-cache-bust
-  - jekyll-socials
 al_folio:
   api_version: 1
   style_engine: tailwind
