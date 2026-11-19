@@ -3,33 +3,33 @@
   "origin": "https://hengjiang95.github.io",
   "heroFigures": [
     {
-      "image": "assets/pet-imaging.webp",
-      "width": 1200,
-      "height": 460,
+      "image": "assets/PET.png",
+      "width": 1752,
+      "height": 897,
       "en": {
         "title": "PET imaging",
-        "subtitle": "Simulated sinogram and reconstructed slice",
-        "alt": "A simulated PET sinogram on the left and a reconstructed activity slice on the right."
+        "subtitle": "Detection, reconstruction, and downstream tasks",
+        "alt": "A PET detector ring records coincidence events for volume reconstruction. The diagram shows downstream lesion detection, segmentation, SUV quantification, and treatment response."
       },
       "zh-CN": {
         "title": "PET 成像",
-        "subtitle": "模拟正弦图与重建切片",
-        "alt": "左侧为模拟 PET 正弦图，右侧为重建得到的放射性活度切片。"
+        "subtitle": "探测、重建与下游任务",
+        "alt": "PET 探测器环采集符合数据并重建三维图像，图中还展示病灶检测、病灶分割、SUV 定量和治疗反应评估。"
       }
     },
     {
-      "image": "assets/cassi-imaging.webp",
-      "width": 1200,
-      "height": 460,
+      "image": "assets/CASSI.png",
+      "width": 1752,
+      "height": 897,
       "en": {
         "title": "CASSI imaging",
-        "subtitle": "Simulated coded snapshot and recovered spectral bands",
-        "alt": "A simulated coded aperture snapshot on the left and recovered wavelength bands at 450, 550, and 660 nm on the right."
+        "subtitle": "Single-disperser optics and hyperspectral reconstruction",
+        "alt": "A single-disperser CASSI diagram shows a coded aperture, dispersive prism, and monochrome detector capturing a 2D compressed measurement for hyperspectral cube reconstruction."
       },
       "zh-CN": {
         "title": "CASSI 成像",
-        "subtitle": "模拟编码快照与重建光谱波段",
-        "alt": "左侧为模拟编码孔径快照，右侧为重建的 450、550 和 660 纳米波段。"
+        "subtitle": "单色散光路与高光谱重建",
+        "alt": "单色散 CASSI 系统通过编码孔径和色散棱镜在单色探测器上获取二维压缩测量，再重建高光谱数据立方体。"
       }
     }
   ],
@@ -187,7 +187,7 @@
         "field": "Computational imaging",
         "institution": "Guangdong Industry Polytechnic University",
         "institutionParent": "School of Artificial Intelligence · Full-time Faculty",
-        "bio": "I develop image reconstruction methods that combine imaging physics with learned priors. My research spans low-dose PET, accelerated MRI, tensor analysis, and compressive spectral imaging.",
+        "bio": "My research lies at the intersection of computational imaging and machine learning. I develop image reconstruction algorithms that integrate imaging physics with data-driven priors, with applications in low-dose PET, accelerated MRI, tensor analysis, and compressive spectral imaging.",
         "education": "PhD, Sun Yat-sen University · June 2024",
         "experienceNav": "CV",
         "experienceHeading": "Education and appointments",
