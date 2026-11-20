@@ -61,6 +61,11 @@
         "period": "2026.08–2026.09",
         "role": "博士后",
         "institution": "中国科学院深圳先进技术研究院"
+      },
+      "supervisor": {
+        "url": "https://people.ucas.edu.cn/~huzhanli",
+        "en": "Zhanli Hu",
+        "zh-CN": "胡战利研究员"
       }
     },
     {
@@ -191,6 +196,7 @@
         "education": "PhD, Sun Yat-sen University · June 2024",
         "experienceNav": "CV",
         "experienceHeading": "Education and appointments",
+        "supervisorSentence": "My postdoctoral supervisor was $name.",
         "research": "Research",
         "publications": "Publications",
         "projects": "Projects",
@@ -246,6 +252,7 @@
         "education": "中山大学博士 · 2024 年 6 月",
         "experienceNav": "履历",
         "experienceHeading": "教育与任职经历",
+        "supervisorSentence": "博士后合作导师为$name。",
         "research": "研究方向",
         "publications": "论文",
         "projects": "项目",

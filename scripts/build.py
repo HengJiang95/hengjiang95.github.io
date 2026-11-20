@@ -67,24 +67,32 @@ def render_papers(papers, topics, name, github, repository_label):
     return "".join(sections)
 
 
-def render_experience(entries, language, heading):
+def render_experience(entries, language, copy):
     if not entries:
         return ""
 
     rows = []
     for entry in entries:
         item = entry[language]
+        supervisor = entry.get("supervisor")
+        supervisor_note = ""
+        if supervisor:
+            url = escape(supervisor["url"])
+            name = escape(supervisor[language])
+            link = f'<a href="{url}">{name}</a>'
+            sentence = Template(escape(copy["supervisorSentence"])).substitute(name=link)
+            supervisor_note = f'\n            <p class="experience-institution">{sentence}</p>'
         rows.append(f'''
         <li>
           <p class="experience-period">{escape(item["period"])}</p>
           <div>
             <p class="experience-role">{escape(item["role"])}</p>
-            <p class="experience-institution">{escape(item["institution"])}</p>
+            <p class="experience-institution">{escape(item["institution"])}</p>{supervisor_note}
           </div>
         </li>''')
     return f'''<section class="section" id="experience" aria-labelledby="experience-title">
       <div class="section-heading">
-        <h2 id="experience-title">{escape(heading)}</h2>
+        <h2 id="experience-title">{escape(copy.get("experienceHeading", ""))}</h2>
       </div>
       <ul class="experience-list" role="list">{"".join(rows)}
       </ul>
@@ -306,7 +314,7 @@ def render_page(site, papers, template, language, variant):
         githubUrl=escape(github),
         experienceNavLink=f'<a href="#experience">{escape(copy["experienceNav"])}</a>' if experience else "",
         contactNavLink=f'<a href="#contact">{escape(copy["contactHeading"])}</a>' if contact else "",
-        experienceSection=render_experience(experience, language, copy.get("experienceHeading", "")),
+        experienceSection=render_experience(experience, language, copy),
         researchNote="" if experience else f'<p class="section-note">{escape(copy["education"])}</p>',
         researchCards="".join(research_cards),
         topicButtons="\n            ".join(topic_buttons),
